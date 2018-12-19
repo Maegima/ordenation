@@ -7,7 +7,6 @@ void refazHeap(Lista *lista, Indice raiz, Indice tamanho){
     //printf("heap(%d) - ", raiz);
     //imprimeLista(lista);
     Item *vec = lista->item;
-    Item aux;
     esq = 2*raiz + 1;
     dir = 2*raiz + 2;
     if(dir < tamanho)
@@ -15,9 +14,7 @@ void refazHeap(Lista *lista, Indice raiz, Indice tamanho){
     else
         maior = esq;
     if(vec[maior].chave > vec[raiz].chave){
-        aux = vec[maior];
-        vec[maior] = vec[raiz];
-        vec[raiz] = aux;
+        trocarItem(&vec[maior], &vec[raiz]);
         if(maior < (tamanho/2))
             refazHeap(lista, maior, tamanho);
     }

@@ -5,7 +5,6 @@
 void SelectionSort(Lista *lista){
     if(!lista) return;
     Item *vec = lista->item;
-    Item aux;
     int i, j, menor;
     for(i = 0; i < lista->length; i++){
         menor = i;
@@ -15,9 +14,7 @@ void SelectionSort(Lista *lista){
             }
         }
         if(menor != i){
-            aux = vec[menor];
-            vec[menor] = vec[i];
-            vec[i] = aux;
+            trocarItem(&vec[menor], &vec[i]);
         }
     }
 }

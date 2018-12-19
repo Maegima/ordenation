@@ -4,7 +4,7 @@
 
 void Particao(Lista *lista, Indice b, Indice e){
     Indice i, j;
-    Item aux, pivo;
+    Item pivo;
     Item *vec = lista->item;
     pivo = vec[(e+b)/2];
     i = b;
@@ -13,9 +13,7 @@ void Particao(Lista *lista, Indice b, Indice e){
         while(pivo.chave > vec[i].chave) i++;
         while(pivo.chave < vec[j].chave) j--;
         if(i <= j){
-            aux = vec[i];
-            vec[i] = vec[j];
-            vec[j] = aux;
+            trocarItem(&vec[b], &vec[e]);
             i++;
             j--;
         }

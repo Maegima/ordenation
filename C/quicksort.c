@@ -3,7 +3,7 @@
 #include   "lista.c"
 
 void Particao(Lista *lista, Indice b, Indice e, Indice *i, Indice *j){
-    Item aux, pivo;
+    Item pivo;
     Item *vec = lista->item;
     pivo = vec[(e+b)/2];
     e--;
@@ -11,9 +11,7 @@ void Particao(Lista *lista, Indice b, Indice e, Indice *i, Indice *j){
         while(pivo.chave > vec[b].chave)b++;
         while(pivo.chave < vec[e].chave)e--;
         if(b <= e){
-            aux = vec[b];
-            vec[b] = vec[e];
-            vec[e] = aux;
+            trocarItem(&vec[b], &vec[e]);
             b++;
             e--;
         }

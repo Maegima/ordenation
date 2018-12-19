@@ -5,16 +5,13 @@
 void BubbleSort(Lista *lista){
     if(!lista) return;
     Item *vec = lista->item;
-    Item aux;
     Indice i = 0, j;
     int trocado = 1;
     while((i < lista->length) && trocado){
         trocado = 0;
         for(j = i+1; j < lista->length; j++){
             if(vec[j].chave < vec[i].chave){
-                aux = vec[i];
-                vec[i] = vec[j];
-                vec[j] = aux;
+                trocarItem(&vec[j], &vec[i]);
                 trocado = 1;
             }
         }

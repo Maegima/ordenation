@@ -13,6 +13,13 @@ typedef struct Lista{
     Indice length, size;   
 } Lista;
 
+void trocarItem(Item *a, Item *b){
+    Item c;
+    c = *a;
+    *a = *b;
+    *b = c; 
+}
+
 Lista *alocaLista(int n){
     if(n < 1)
         return NULL;
