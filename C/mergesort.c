@@ -32,30 +32,19 @@ void intercala(Lista *lista, Indice p, Indice q, Indice r){
     free(aux);
 }
 
-void MergeSort(Lista *lista, Indice i, Indice j){
-    if(!lista) return;
+void Merge(Lista *lista, Indice i, Indice j){
     Indice k;
-    /*printf("merge(%d-%d) - ", i, j);
-    for(int b = i;b < j;b++){
-        printf("%d ", lista->item[b].chave);
-    }
-    printf("\n");*/
     if(i+1 < j){
         k = i+(j-i)/2;
-        if(i+1 < k) MergeSort(lista, i, k);
-        if(k+1 < j) MergeSort(lista, k, j);
-        /*printf("intercala(%d-%d) - ", i, j);
-        for(int b = i;b < j;b++){
-            printf("%d ", lista->item[b].chave);
-        }
-        printf("\n");*/
+        if(i+1 < k) Merge(lista, i, k);
+        if(k+1 < j) Merge(lista, k, j);
         intercala(lista, i, k, j);
-        /*printf("intercalado(%d-%d) - ", i, j);
-        for(int b = i;b < j;b++){
-            printf("%d ", lista->item[b].chave);
-        }
-        printf("\n");*/
     }
+}
+
+void MergeSort(Lista *lista){
+    if(!lista) return;
+    Merge(lista, 0, lista->length);
 }
 
 int main(){
@@ -68,7 +57,7 @@ int main(){
         InsereItem(lista, a);
     }
     imprimeLista(lista);
-    MergeSort(lista, 0, 11);
+    MergeSort(lista);
     imprimeLista(lista);
     liberaLista(&lista);
     return 0;
